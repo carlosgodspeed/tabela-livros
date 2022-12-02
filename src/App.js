@@ -3,43 +3,180 @@ import TabelaHead from "./components/TabelaHead"
 import TabelaBody from "./components/TabelaBody"
 import TabelaFoot from "./components/TabelaFoot"
 class App extends Component {
-  state = {
-    livros:[
-      {
-        id: 1,
-        titulo: "Livro",
-        autor: "carlos henrique"
-      },
-      {
-        id: 1,
-        titulo: "Livro",
-        autor: "carlos henrique"
-      },
-      {
-        id: 1,
-        titulo: "Livro",
-        autor: "carlos henrique"
-      },
-      {
-        id: 1,
-        titulo: "Livro",
-        autor: "carlos henrique"
-      },
-      {
-        id: 1,
-        titulo: "Livro",
-        autor: "carlos henrique"
-      },
-    ]
-  };
+state = {
+  livros:[
+    {
+      "id": "978-85-7522-726-8",
+      "titulo": "Dominando o Android com Kotlin",
+      "autor": "Nelson Glauber"
+    },
+    {
+      "id": "978-85-7522-714-5",
+      "titulo": "Introdução à linguagem Python",
+      "autor": "José Augusto N. G. Manzano"
+    },
+    {
+      "id": "978-85-7522-691-9",
+      "titulo": "PHP Programando com Orientação a Objetos",
+      "autor": "Pablo Dall’Oglio"
+    },
+    {
+      "id": "978-85-7522-550-9",
+      "titulo": "Laravel para ninjas",
+      "autor": "Ademir C. Gabardo"
+    },
+    {
+      "id": "978-85-7522-814-2",
+      "titulo": "Padrões para Kubernetes",
+      "autor": "Bilgin Ibryam / Roland Huß"
+    },
+    {
+      "id": "978-85-7522-809-8",
+      "titulo": "Construindo Chatbots com Python",
+      "autor": "Sumit Raj"
+    },
+    {
+      "id": "978-85-7522-805-0",
+      "titulo": "Problemas Clássicos de Ciência da Computação com Python",
+      "autor": "David Kopec"
+    },
+    {
+      "id": "978-85-7522-780-0",
+      "titulo": "Internet das Coisas para Desenvolvedores",
+      "autor": "Ricardo da Silva Ogliari"
+    },
+    {
+      "id": "978-85-7522-677-3",
+      "titulo": "Node Essencial",
+      "autor": "Ricardo R. Lecheta"
+    },
+    {
+      "id": "978-85-7522-807-4",
+      "titulo": "Introdução ao Pentest",
+      "autor": "Daniel Moreno"
+    },
+    {
+      "id": "978-85-7522-632-2",
+      "titulo": "CSS Grid Layout",
+      "autor": "Maurício Samy Silva"
+    },
+    {
+      "id": "978-85-7522-403-8",
+      "titulo": "HTML5 - 2ª Edição",
+      "autor": "Maurício Samy Silva"
+    },
+    {
+      "id": "978-85-7522-392-5",
+      "titulo": "Web Design Responsivo",
+      "autor": "Maurício Samy Silva"
+    },
+    {
+      "id": "978-85-7522-289-8",
+      "titulo": "CSS3",
+      "autor": "Maurício Samy Silva"
+    },
+    {
+      "id": "978-85-7522-166-2",
+      "titulo": "Criando Sites com HTML",
+      "autor": "Maurício Samy Silva"
+    },
+    {
+      "id": "978-85-7522-139-6",
+      "titulo": "Construindo Sites com CSS e (X)HTML",
+      "autor": "Maurício Samy Silva"
+    },
+    {
+      "id": "978-85-7522-730-5",
+      "titulo": "Web Scraping com Python - 2ª edição",
+      "autor": "Ryan Mitchell"
+    },
+    {
+      "id": "978-85-7522-683-4",
+      "titulo": "Primeiros Passos com a Linguagem Rust",
+      "autor": "José Augusto N. G. Manzano"
+    },
+    {
+      "id": "978-85-7522-444-1",
+      "titulo": "Java Guia do Programador - 3ª Edição",
+      "autor": "Peter Jandl Junior"
+    },
+    {
+      "id": "978-85-7522-812-8",
+      "titulo": "Redação Estratégica para UX",
+      "autor": "Torrey Podmajersky"
+    },
+    {
+      "id": "978-85-7522-776-3",
+      "titulo": "UX Design",
+      "autor": "Will Grant"
+    },
+    {
+      "id": "978-85-7522-366-6",
+      "titulo": "Design centrado no usuário",
+      "autor": "Travis Lowdermilk"
+    },
+    {
+      "id": "978-85-7522-512-7",
+      "titulo": "Aprendendo Material Design",
+      "autor": "Kyle Mew"
+    },
+    {
+      "id": "978-85-7522-453-3",
+      "titulo": "Design Thinking & Thinking Design",
+      "autor": "Adriana Melo / Ricardo Abelheira"
+    },
+    {
+      "id": "978-85-7522-438-0",
+      "titulo": "Fundamentos de HTML5 e CSS3",
+      "autor": "Maurício Samy Silva"
+    },
+    {
+      "id": "978-85-7522-410-6",
+      "titulo": "Crie seu próprio site",
+      "autor": "Nate Cooper"
+    },
+    {
+      "id": "978-85-7522-340-6",
+      "titulo": "Análise e Design Orientados a Objetos",
+      "autor": "Hélio Engholm Jr."
+    },
+    {
+      "id": "978-85-7522-319-2",
+      "titulo": "Padrões de Design para Aplicativos Móveis",
+      "autor": "Theresa Neil"
+    },
+    {
+      "id": "978-85-7522-358-1",
+      "titulo": "Padrões de Projeto para o Android",
+      "autor": "Greg Nudelman"
+    }
+  ]
+};
+componentDidMount() {
+  fetch("/api/livros.json")
+    .then(response => response.json())
+    .then(livros => this.setState({ livros }))
+    .catch(function(error) {
+      console.log("Erro na requisição");
+    })
+    .finally(function() {
+      console.log("Sempre retorna");
+    });
+};
+handleRemoverLinha = (id) => {
+  const livros = this.state.livros.filter(l => l.id !== id);
+  this.setState({ livros });
+};
 render() {
   return (
     <table className="Tabela">
       <TabelaHead />
-      <TabelaBody livros={ this.state.livros } />
-      <TabelaFoot />
+      <TabelaBody livros={ this.state.livros }
+                  removerLinha={this.handleRemoverLinha} 
+                  />
+      <TabelaFoot qdelivros = { this.state.livros.length } />
     </table>
   );
-}
+};
 }
 export default App;
